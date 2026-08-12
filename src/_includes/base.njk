@@ -1,0 +1,77 @@
+---
+ogType: website
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+{% if noindex %}<meta name="robots" content="noindex, follow">{% else %}<meta name="robots" content="index, follow, max-image-preview:large">{% endif %}
+
+<!-- Open Graph -->
+<meta property="og:title" content="{{ ogTitle or title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:type" content="{{ ogType }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:image" content="{{ site.url }}{{ ogImage or site.ogImage }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ site.name }} — growth systems for small and medium businesses">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ ogTitle or title }}">
+<meta name="twitter:description" content="{{ description }}">
+<meta name="twitter:image" content="{{ site.url }}{{ ogImage or site.ogImage }}">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23071A15%22/><text y=%22.9em%22 x=%2250%22 text-anchor=%22middle%22 font-size=%2258%22 fill=%22%23C6F94E%22 font-family=%22monospace%22 font-weight=%22bold%22>e</text></svg>">
+<link rel="preload" href="/assets/fonts/space-grotesk-600-subset.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<link rel="stylesheet" href="/assets/css/site.css">
+
+<!-- Organization structured data (site-wide) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "{{ site.name }}",
+  "url": "{{ site.url }}/",
+  "logo": "{{ site.url }}{{ site.ogImage }}",
+  "email": "{{ site.email }}",
+  "telephone": "{{ site.phone }}",
+  "areaServed": "{{ site.areaServed }}"{% set sameAs = [] %}{% for k, v in site.social %}{% if v %}{% set sameAs = (sameAs.push(v), sameAs) %}{% endif %}{% endfor %}{% if sameAs.length %},
+  "sameAs": [{% for u in sameAs %}"{{ u }}"{% if not loop.last %}, {% endif %}{% endfor %}]{% endif %}
+}
+</script>
+<!-- Breadcrumbs structured data (site-wide) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/" }{% for c in crumbs %},
+    { "@type": "ListItem", "position": {{ loop.index + 1 }}, "name": "{{ c.name }}", "item": "{{ site.url }}{{ c.url }}" }{% endfor %}{% if page.url != '/' %},
+    { "@type": "ListItem", "position": {{ (crumbs | length) + 2 }}, "name": "{{ breadcrumbName or title }}", "item": "{{ site.url }}{{ page.url }}" }{% endif %}
+  ]
+}
+</script>
+{{ headExtra | safe }}
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+{% include "header.njk" %}
+<main id="main">
+{{ content | safe }}
+</main>
+{% include "footer.njk" %}
+<!-- Cookie notice (informational; placeholder copy — review with counsel) -->
+<div class="cookie-note" id="cookieNote" hidden>
+  <p>We use cookies for basic analytics to understand how this site is used. See our <a href="/cookies/">Cookie Notice</a>.</p>
+  <button type="button" id="cookieOk" class="btn btn-primary btn-sm">Got it</button>
+</div>
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+---
+layout: "base.njk"
+title: "Our Services | SEO, AI, Web, Marketing & Finance"
+description: "Explore our six services — SEO, web development, AI automation, AI voice reception, digital marketing and accounting — built to plug into one system."
+breadcrumbName: "Services"
+---
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="crumb">// Services</span>
+      <h1>Everything you need to grow, under one roof</h1>
+      <p>Pick the piece you need most today. Every service is built to plug into the same connected system.</p>
+    </div>
+  </section>
+
+  <section class="svc-light">
+    <div class="wrap">
+      {% include "partials/hub-service-cards.njk" %}
+    </div>
+  </section>
+
+  <!-- pricing -->
+  <section class="benefits" style="background:none">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow">// Pricing</span>
+        <h2>Starting-from pricing</h2>
+        <p>Transparent starting points. Final scope and price are confirmed in writing after a free discovery call.</p>
+      </div>
+      <div class="price-grid">
+        {%- for s in services %}
+        <article class="price-card">
+          <h3>{{ s.name | safe }}</h3>
+          <span class="from">From</span>
+          <div class="amt">{{ s.startingFrom }}</div>
+          <ul>
+            {%- for i in s.included %}{% if loop.index <= 3 %}<li>{{ i | safe }}</li>{% endif %}{%- endfor %}
+          </ul>
+          <a href="/services/{{ s.slug }}/" class="more">Details &amp; FAQ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </article>
+        {%- endfor %}
+      </div>
+      <p class="price-note">Indicative starting prices &mdash; edit them in <code>src/_data/services.js</code>. No hidden retainers or surprise line items.</p>
+    </div>
+  </section>
+
+  <!-- how it works -->
+  <section class="how">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow">// How it works</span>
+        <h2>From first call to running system</h2>
+        <p>A clear, four-step path &mdash; no mystery, no endless meetings.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Discovery call</h3>
+          <p>A free 30-minute call to understand your goals, your funnel and where leads are leaking.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>System blueprint</h3>
+          <p>We map exactly what we'd build and automate, with clear scope, timeline and pricing.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Build &amp; connect</h3>
+          <p>We build, wire up and test the whole system, then hand it over fully working.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <h3>Measure &amp; grow</h3>
+          <p>We track leads and results, then optimise and layer in the next piece as you scale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow">// FAQ</span>
+        <h2>Questions, answered</h2>
+        <p>Everything you might be wondering before we talk.</p>
+      </div>
+      <div class="faq-wrap">
+        <div class="faq-item">
+          <button class="faq-q">Do I have to buy every service at once?<span class="ic"></span></button>
+          <div class="faq-a"><p>Not at all. Most clients start with the one thing hurting most &mdash; often a new website, SEO, or the AI voice receptionist &mdash; then layer in the rest as results come in. Everything is designed to connect, so adding later is simple.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How quickly will I see results?<span class="ic"></span></button>
+          <div class="faq-a"><p>Automation and voice reception start working the day they go live. Paid campaigns show signal within weeks. SEO is a longer game &mdash; typically a few months to meaningful movement &mdash; but it compounds into your most durable channel.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What size businesses do you work with?<span class="ic"></span></button>
+          <div class="faq-a"><p>Small and medium businesses, professional service firms, startups, e-commerce brands, and companies going through digital transformation. If you have real customers and want a system to reach more of them, you're a fit.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How does pricing work?<span class="ic"></span></button>
+          <div class="faq-a"><p>Scope-based and transparent. After the discovery call we send a clear blueprint with fixed project pricing or a monthly figure &mdash; no vague hourly retainers and no surprise line items.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Will the AI sound robotic to my callers?<span class="ic"></span></button>
+          <div class="faq-a"><p>No. Our voice agents use natural speech, handle real conversations, and are tuned to your business's tone and booking rules. Most callers simply get their questions answered and their appointment booked.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do you work with businesses outside your area?<span class="ic"></span></button>
+          <div class="faq-a"><p>Yes. We work remotely with clients across the US and beyond. Everything we build &mdash; websites, automations, reporting &mdash; is delivered and managed online, so location is never a barrier.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap">
+      <div class="cta-inner">
+        <span class="eyebrow on-dark" style="justify-content:center">// Get started</span>
+        <h2>Not sure where to start?</h2>
+        <p>That's exactly what the discovery call is for. We'll tell you honestly what to fix first.</p>
+        <div class="cta-actions">
+          <a href="/contact/" class="btn btn-lime">Book a discovery call
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    {% for s in services %}{ "@type": "ListItem", "position": {{ loop.index }}, "name": "{{ s.name }}", "url": "{{ site.url }}/services/{{ s.slug }}/" }{% if not loop.last %},{% endif %}
+    {% endfor %}]
+}
+</script>

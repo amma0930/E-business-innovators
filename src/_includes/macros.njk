@@ -1,0 +1,7 @@
+{%- macro pic(base, small, wL, hL, wS, hS, sizes, alt, eager) -%}
+<picture>
+  <source type="image/avif" srcset="/assets/img/{{ small }}.avif {{ wS }}w, /assets/img/{{ base }}.avif {{ wL }}w" sizes="{{ sizes }}">
+  <source type="image/webp" srcset="/assets/img/{{ small }}.webp {{ wS }}w, /assets/img/{{ base }}.webp {{ wL }}w" sizes="{{ sizes }}">
+  <img src="/assets/img/{{ base }}.png" srcset="/assets/img/{{ small }}.png {{ wS }}w, /assets/img/{{ base }}.png {{ wL }}w" sizes="{{ sizes }}" width="{{ wL }}" height="{{ hL }}" alt="{{ alt }}"{% if eager %} fetchpriority="high" decoding="async"{% else %} loading="lazy" decoding="async"{% endif %}>
+</picture>
+{%- endmacro -%}

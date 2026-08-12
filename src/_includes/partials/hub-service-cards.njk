@@ -1,0 +1,11 @@
+<div class="svc-grid">
+  {%- for s in services %}
+  <article class="svc-card">
+    <span class="svc-num">// {{ s.num }}</span>
+    <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">{{ s.icon | safe }}</svg></div>
+    <h3>{{ s.name | safe }}</h3>
+    <p>{{ s.hubBlurb | safe }}</p>
+    <a href="/services/{{ s.slug }}/" class="more">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </article>
+  {%- endfor %}
+</div>

@@ -1,0 +1,38 @@
+---
+layout: base.njk
+crumbs:
+  - name: Blog
+    url: /blog/
+eleventyComputed:
+  breadcrumbName: "{{ title }}"
+ogType: article
+---
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="crumb">// Blog</span>
+      <h1>{{ title }}</h1>
+      <p>{{ date | readableDate }}{% if author %} &middot; {{ author }}{% endif %}</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap article-body" style="max-width:760px">
+      {{ content | safe }}
+      <p style="margin-top:32px"><a href="/blog/" class="more">&larr; Back to all articles</a></p>
+    </div>
+  </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ title }}",
+  "description": "{{ description }}",
+  "datePublished": "{{ date | isoDate }}",
+  "dateModified": "{{ date | isoDate }}",
+  "author": { "@type": "Organization", "name": "{{ site.name }}" },
+  "publisher": { "@type": "Organization", "name": "{{ site.name }}", "logo": { "@type": "ImageObject", "url": "{{ site.url }}{{ site.ogImage }}" } },
+  "image": "{{ site.url }}{{ ogImage or site.ogImage }}",
+  "mainEntityOfPage": "{{ site.url }}{{ page.url }}"
+}
+</script>

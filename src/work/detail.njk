@@ -1,0 +1,104 @@
+---
+layout: base.njk
+pagination:
+  data: caseStudies
+  size: 1
+  alias: cs
+  addAllPagesToCollections: true
+permalink: "/work/{{ cs.slug }}/"
+crumbs:
+  - name: Our Work
+    url: /work/
+eleventyComputed:
+  title: "{{ cs.industry }} case study | E-Business Innovators"
+  description: "{{ cs.summary }}"
+  breadcrumbName: "{{ cs.client }} — {{ cs.industry }}"
+  ogTitle: "Case study: {{ cs.industry }} — {{ cs.category }}"
+---
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="crumb">// Case study &middot; {{ cs.category }}</span>
+      <h1>{{ cs.client }} &mdash; {{ cs.industry }}</h1>
+      <p>{{ cs.summary }}</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="legal-flag" style="max-width:820px"><b>Placeholder case study.</b> Client name, logo, screenshots and the <span class="ph-inline">[before]</span>/<span class="ph-inline">[after]</span> figures are to be supplied and verified before publishing.</div>
+
+      <div class="meta-row">
+        <div class="mi"><div class="k">Client</div><div class="v">{{ cs.client }}</div></div>
+        <div class="mi"><div class="k">Industry</div><div class="v">{{ cs.industry }}</div></div>
+        <div class="mi"><div class="k">Focus</div><div class="v">{{ cs.category }}</div></div>
+        <div class="mi"><div class="k">Timeline</div><div class="v">{{ cs.timeline }}</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap" style="max-width:820px">
+      <div class="section-head"><span class="eyebrow">// The problem</span><h2>What wasn't working</h2></div>
+      <p style="color:var(--muted);max-width:74ch">{{ cs.problem }}</p>
+    </div>
+  </section>
+
+  <section class="benefits" style="padding-top:0;background:none">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">// What we built</span><h2>The system we put in</h2></div>
+      <ul class="ap-list">
+        {% for b in cs.built %}<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>{{ b }}</li>{% endfor %}
+      </ul>
+      <div style="margin-top:22px">
+        <span class="eyebrow" style="margin-bottom:10px">// Stack</span>
+        <div class="chips">{% for t in cs.stack %}<span class="chip">{{ t }}</span>{% endfor %}</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">// Results</span><h2>Before &rarr; after</h2></div>
+      <div class="stat-grid">
+        {% for r in cs.results %}
+        <div class="stat">
+          <div class="lbl">{{ r.label }}</div>
+          <div class="ba"><span class="before">{{ r.before }}</span><span class="arrow">&rarr;</span><span class="after">{{ r.after }}</span></div>
+        </div>
+        {% endfor %}
+      </div>
+      <div style="margin-top:26px">
+        <span class="eyebrow" style="margin-bottom:10px">// Proof</span>
+        <div class="ph-box" style="aspect-ratio:16/7"><span class="ph-lbl">Screenshots / dashboard<br>[to be supplied by client]</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap">
+      <div class="cta-inner">
+        <span class="eyebrow on-dark" style="justify-content:center">// Similar situation?</span>
+        <h2>Let's map your version of this</h2>
+        <p>Book a free discovery call and we'll show you what we'd build first.</p>
+        <div class="cta-actions">
+          <a href="/contact/" class="btn btn-lime">Book a discovery call
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="/work/" class="btn btn-ghost on-dark">All case studies</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Case study: {{ cs.industry }} — {{ cs.category }}",
+  "description": "{{ cs.summary }}",
+  "author": { "@type": "Organization", "name": "{{ site.name }}" },
+  "publisher": { "@type": "Organization", "name": "{{ site.name }}", "logo": { "@type": "ImageObject", "url": "{{ site.url }}{{ site.ogImage }}" } },
+  "image": "{{ site.url }}{{ site.ogImage }}",
+  "mainEntityOfPage": "{{ site.url }}{{ page.url }}"
+}
+</script>

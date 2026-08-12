@@ -1,0 +1,23 @@
+<header class="site-header" id="header">
+  <div class="wrap">
+    <nav class="nav" aria-label="Primary">
+      <a href="/" class="logo"{% if page.url == '/' %} aria-current="page"{% endif %} aria-label="E-Business Innovators home">
+        <span class="logo-mark"><span>e</span></span>
+        <span>E&#8209;Business <b>Innovators</b></span>
+      </a>
+      <ul class="nav-links" id="navlinks">
+        {%- for item in site.nav %}
+        {%- set isActive = (item.url == '/' and page.url == '/') or (item.url != '/' and (page.url | startsWith(item.url))) %}
+        <li><a href="{{ item.url }}"{% if isActive %} class="active" aria-current="page"{% endif %}>{{ item.text }}</a></li>
+        {%- endfor %}
+        <li class="mob-cta"><a href="/contact/">Book a discovery call</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="/contact/" class="btn btn-primary">Book a discovery call
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </div>
+</header>

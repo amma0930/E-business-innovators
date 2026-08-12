@@ -1,0 +1,33 @@
+---
+layout: base.njk
+permalink: /blog/
+title: "Insights & Blog | E-Business Innovators"
+description: "Practical insights on SEO, AI automation, web and marketing for small and medium businesses — from the E-Business Innovators team."
+breadcrumbName: "Blog"
+---
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="crumb">// Blog</span>
+      <h1>Insights &amp; ideas for growing businesses</h1>
+      <p>Practical thinking on SEO, AI automation, web and marketing — no fluff, just what moves the needle.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      {% if collections.posts and collections.posts.length %}
+      <div class="b-grid">
+        {% for post in collections.posts %}
+        <article class="b-card">
+          <span class="idx">{{ post.date | readableDate }}</span>
+          <h3 style="margin-top:8px"><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+          <p>{{ post.data.description }}</p>
+          <a href="{{ post.url }}" class="more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </article>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p style="color:var(--muted)">New articles are on the way — check back soon.</p>
+      {% endif %}
+    </div>
+  </section>

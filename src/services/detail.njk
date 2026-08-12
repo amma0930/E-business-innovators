@@ -1,0 +1,117 @@
+---
+layout: base.njk
+pagination:
+  data: services
+  size: 1
+  alias: svc
+  addAllPagesToCollections: true
+permalink: "/services/{{ svc.slug }}/"
+crumbs:
+  - name: Services
+    url: /services/
+eleventyComputed:
+  title: "{{ svc.title }}"
+  description: "{{ svc.description }}"
+  breadcrumbName: "{{ svc.name }}"
+  ogTitle: "{{ svc.name }} | E-Business Innovators"
+---
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="crumb">// Services</span>
+      <h1>{{ svc.name | safe }}</h1>
+      <p>{{ svc.tagline }}</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">// Overview</span>
+        <h2>{{ svc.tagline }}</h2>
+      </div>
+      {% for p in svc.intro %}<p style="max-width:760px;margin-bottom:16px;color:var(--muted)">{{ p | safe }}</p>{% endfor %}
+      <a href="/contact/" class="btn btn-primary" style="margin-top:8px">Book a discovery call
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="benefits">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">// What's included</span>
+        <h2>What you get</h2>
+      </div>
+      <ul class="ap-list">
+        {% for i in svc.included %}<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>{{ i | safe }}</li>{% endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">// Pricing</span><h2>Simple, scope-based pricing</h2></div>
+      <div class="price-band">
+        <div><span class="from">Starting from</span><span class="amt">{{ svc.startingFrom }}</span></div>
+        <a href="/contact/" class="btn btn-primary">Get a fixed quote
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <p class="price-note">Indicative starting price &mdash; final scope and figure are confirmed in writing after the discovery call. No hidden retainers.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow">// FAQ</span>
+        <h2>{{ svc.name | safe }} questions, answered</h2>
+      </div>
+      <div class="faq-wrap">
+        {% for f in svc.faq %}
+        <div class="faq-item">
+          <button class="faq-q">{{ f.q }}<span class="ic"></span></button>
+          <div class="faq-a"><p>{{ f.a }}</p></div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap">
+      <div class="cta-inner">
+        <span class="eyebrow on-dark" style="justify-content:center">// Get started</span>
+        <h2>Ready to talk {{ svc.name | replace(" Services", "") | safe }}?</h2>
+        <p>Book a free 30-minute discovery call. We'll tell you honestly what to do first.</p>
+        <div class="cta-actions">
+          <a href="/contact/" class="btn btn-lime">Book a discovery call
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="/services/" class="btn btn-ghost on-dark">All services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "{{ svc.name }}",
+  "name": "{{ svc.name }}",
+  "description": "{{ svc.description }}",
+  "url": "{{ site.url }}/services/{{ svc.slug }}/",
+  "provider": { "@type": "Organization", "name": "{{ site.name }}", "url": "{{ site.url }}/" },
+  "areaServed": "{{ site.areaServed }}"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for f in svc.faq %}{ "@type": "Question", "name": "{{ f.q }}", "acceptedAnswer": { "@type": "Answer", "text": "{{ f.a }}" } }{% if not loop.last %},{% endif %}
+    {% endfor %}]
+}
+</script>

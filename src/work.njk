@@ -1,0 +1,54 @@
+---
+layout: base.njk
+permalink: /work/
+title: "Our Work & Case Studies | E-Business Innovators"
+description: "Case studies showing how E-Business Innovators helps businesses win more leads and reclaim hours with connected SEO, web, automation and AI systems."
+breadcrumbName: "Our Work"
+---
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="crumb">// Our work</span>
+      <h1>Real systems, measurable results</h1>
+      <p>A look at how we diagnose the leak, build the fix, and measure what changed. Client names, logos and screenshots are being finalised for publication.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="legal-flag" style="max-width:820px;margin-bottom:34px"><b>Note:</b> the case studies below use placeholder client names and illustrative <span class="ph-inline">[before]</span>/<span class="ph-inline">[after]</span> figures. Replace with verified client data, logos and screenshots before publishing.</div>
+      <div class="cs-grid">
+        {%- for c in caseStudies %}
+        <article class="cs-card">
+          <div class="cs-logo ph-box"><span class="ph-lbl">Client logo<br>[to be supplied]</span></div>
+          <div class="cs-body">
+            <span class="kicker">// {{ c.category }}</span>
+            <h3>{{ c.client }} &mdash; {{ c.industry }}</h3>
+            <p>{{ c.summary }}</p>
+            <div class="cs-metric">
+              {%- for r in c.results %}{% if loop.index <= 2 %}
+              <div class="m"><b>{{ r.after }}</b><span>{{ r.label }}</span></div>
+              {% endif %}{%- endfor %}
+            </div>
+            <a href="/work/{{ c.slug }}/" class="more">Read the case study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        {%- endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap">
+      <div class="cta-inner">
+        <span class="eyebrow on-dark" style="justify-content:center">// Your turn</span>
+        <h2>Want results like these?</h2>
+        <p>Book a free discovery call and we'll map where your leads are leaking and what we'd build first.</p>
+        <div class="cta-actions">
+          <a href="/contact/" class="btn btn-lime">Book a discovery call
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="/services/" class="btn btn-ghost on-dark">Browse services</a>
+        </div>
+      </div>
+    </div>
+  </section>
