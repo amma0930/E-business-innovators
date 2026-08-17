@@ -18,30 +18,7 @@ breadcrumbName: "Services"
     </div>
   </section>
 
-  <!-- pricing -->
-  <section class="benefits" style="background:none">
-    <div class="wrap">
-      <div class="section-head center">
-        <span class="eyebrow">// Pricing</span>
-        <h2>Starting-from pricing</h2>
-        <p>Transparent starting points. Final scope and price are confirmed in writing after a free discovery call.</p>
-      </div>
-      <div class="price-grid">
-        {%- for s in services %}
-        <article class="price-card">
-          <h3>{{ s.name | safe }}</h3>
-          <span class="from">From</span>
-          <div class="amt">{{ s.startingFrom }}</div>
-          <ul>
-            {%- for i in s.included %}{% if loop.index <= 3 %}<li>{{ i | safe }}</li>{% endif %}{%- endfor %}
-          </ul>
-          <a href="/services/{{ s.slug }}/" class="more">Details &amp; FAQ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </article>
-        {%- endfor %}
-      </div>
-      <p class="price-note">Indicative starting prices &mdash; edit them in <code>src/_data/services.js</code>. No hidden retainers or surprise line items.</p>
-    </div>
-  </section>
+
 
   <!-- how it works -->
   <section class="how">
